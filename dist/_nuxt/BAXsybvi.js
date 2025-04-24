@@ -1,0 +1,1 @@
+import{_ as s,c as o,o as t,a,q as c}from"./C3f4aPB-.js";const n={},r={class:"flex flex-col"},d={class:"flex-grow overflow-x-hidden pb-3"};function l(e,_){return t(),o("div",r,[a("main",d,[c(e.$slots,"default",{},void 0,!0)])])}const i=s(n,[["render",l],["__scopeId","data-v-fd743535"]]);export{i as default};
