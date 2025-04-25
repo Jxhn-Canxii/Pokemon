@@ -3,32 +3,32 @@ import { Server } from 'node:http';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { parentPort, threadId } from 'node:worker_threads';
-import { getRequestHeader, splitCookiesString, setResponseStatus, setResponseHeader, send, getRequestHeaders, defineEventHandler, handleCacheHeaders, createEvent, fetchWithEvent, isEvent, eventHandler, getResponseStatus, setResponseHeaders, setHeaders, sendRedirect, proxyRequest, createError, getQuery as getQuery$1, getRequestURL, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, readBody, getResponseStatusText } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/h3/dist/index.mjs';
-import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { stringify, uneval } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/devalue/index.js';
-import destr from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/destr/dist/index.mjs';
-import { withQuery, joinURL, withTrailingSlash, parseURL, withoutBase, getQuery, joinRelativeURL } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/ufo/dist/index.mjs';
-import { propsToString, renderSSRHead } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/@unhead/ssr/dist/index.mjs';
-import { createServerHead as createServerHead$1, CapoPlugin } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/unhead/dist/index.mjs';
-import { klona } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/klona/dist/index.mjs';
-import defu, { defuFn } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/defu/dist/defu.mjs';
-import { snakeCase } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/scule/dist/index.mjs';
-import { createHooks } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/hookable/dist/index.mjs';
-import { createFetch as createFetch$1, Headers as Headers$1 } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/ofetch/dist/node.mjs';
-import { createCall, createFetch } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/unenv/runtime/fetch/index.mjs';
+import { getRequestHeader, splitCookiesString, setResponseStatus, setResponseHeader, send, getRequestHeaders, defineEventHandler, handleCacheHeaders, createEvent, fetchWithEvent, isEvent, eventHandler, getResponseStatus, setResponseHeaders, setHeaders, sendRedirect, proxyRequest, createError, getQuery as getQuery$1, getRequestURL, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, readBody, getResponseStatusText } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/h3/dist/index.mjs';
+import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import { stringify, uneval } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/devalue/index.js';
+import destr from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/destr/dist/index.mjs';
+import { withQuery, joinURL, withTrailingSlash, parseURL, withoutBase, getQuery, joinRelativeURL } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/ufo/dist/index.mjs';
+import { propsToString, renderSSRHead } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/@unhead/ssr/dist/index.mjs';
+import { createServerHead as createServerHead$1, CapoPlugin } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/unhead/dist/index.mjs';
+import { klona } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/klona/dist/index.mjs';
+import defu, { defuFn } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/defu/dist/defu.mjs';
+import { snakeCase } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/scule/dist/index.mjs';
+import { createHooks } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/hookable/dist/index.mjs';
+import { createFetch as createFetch$1, Headers as Headers$1 } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/ofetch/dist/node.mjs';
+import { createCall, createFetch } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/unenv/runtime/fetch/index.mjs';
 import { AsyncLocalStorage } from 'node:async_hooks';
-import { consola } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/consola/dist/index.mjs';
-import { getContext } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/unctx/dist/index.mjs';
-import { captureRawStackTrace, parseRawStackTrace } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/errx/dist/index.js';
-import { isVNode, unref, version } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/vue/index.mjs';
-import { basename } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/pathe/dist/index.mjs';
-import { getIcons } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/@iconify/utils/lib/index.mjs';
-import { hash } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/ohash/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/unstorage/drivers/fs.mjs';
-import { collections } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/.nuxt/nuxt-icon-server-bundle.mjs';
-import { toRouteMatcher, createRouter } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/radix3/dist/index.mjs';
-import { defineHeadPlugin } from 'file://C:/Users/John-TancorIT/Desktop/System/CCS/node_modules/@unhead/shared/dist/index.mjs';
+import { consola } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/consola/dist/index.mjs';
+import { getContext } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/unctx/dist/index.mjs';
+import { captureRawStackTrace, parseRawStackTrace } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/errx/dist/index.js';
+import { isVNode, unref, version } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/vue/index.mjs';
+import { basename } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/pathe/dist/index.mjs';
+import { getIcons } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/@iconify/utils/lib/index.mjs';
+import { hash } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/ohash/dist/index.mjs';
+import { createStorage, prefixStorage } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/unstorage/drivers/fs.mjs';
+import { collections } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/.nuxt/nuxt-icon-server-bundle.mjs';
+import { toRouteMatcher, createRouter } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/radix3/dist/index.mjs';
+import { defineHeadPlugin } from 'file://C:/Users/John-TancorIT/Desktop/System/YugiOh/node_modules/@unhead/shared/dist/index.mjs';
 
 function hasReqHeader(event, name, includes) {
   const value = getRequestHeader(event, name);
@@ -163,9 +163,9 @@ const errorHandler = (async function errorhandler(error, event) {
   return send(event, html);
 });
 
-const rootDir = "C:/Users/John-TancorIT/Desktop/System/CCS";
+const rootDir = "C:/Users/John-TancorIT/Desktop/System/YugiOh";
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"theme-color","content":"#121212"},{"name":"description","content":"Discover modern living at Diane Residences. We offer beautifully designed spaces that enhance community and comfort in a vibrant environment."},{"name":"keywords","content":"Diane Residences, luxury condominiums, real estate, property development, apartments, community living, Cebu"},{"name":"author","content":"Diane Properties Corporation"},{"property":"og:title","content":"Diane Residences - Luxury Living in Cebu"},{"property":"og:description","content":"Explore Diane Residences for exquisite condominiums that blend style, comfort, and a sense of community."},{"property":"og:image","content":"/images/diane_logo.jpg"},{"property":"og:url","content":"https://www.dianeresidences.com"}],"link":[{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"},{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Helvetica:wght@300;400;500;600;700&display=swap"}],"style":[],"script":[],"noscript":[],"title":"Condo Cebu - Diane Residences"};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"theme-color","content":"#121212"},{"name":"description","content":"Discover modern living at Diane Residences. We offer beautifully designed spaces that enhance community and comfort in a vibrant environment."},{"name":"keywords","content":"Diane Residences, luxury condominiums, real estate, property development, apartments, community living, Cebu"},{"name":"author","content":"Diane Properties Corporation"},{"property":"og:title","content":"Diane Residences - Luxury Living in Cebu"},{"property":"og:description","content":"Explore Diane Residences for exquisite condominiums that blend style, comfort, and a sense of community."},{"property":"og:image","content":"/images/diane_logo.jpg"},{"property":"og:url","content":"https://www.dianeresidences.com"}],"link":[{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"},{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Helvetica:wght@300;400;500;600;700&display=swap"}],"style":[],"script":[],"noscript":[],"title":"Yugi-Oh"};
 
 const appRootTag = "div";
 
@@ -182,7 +182,7 @@ const devReducers = {
   URL: (data) => data instanceof URL ? data.toString() : void 0
 };
 const asyncContext = getContext("nuxt-dev", { asyncContext: true, AsyncLocalStorage });
-const _aIgXKs8mqR = (nitroApp) => {
+const _3WZEe7OyWH = (nitroApp) => {
   const handler = nitroApp.h3App.handler;
   nitroApp.h3App.handler = (event) => {
     return asyncContext.callAsync({ logs: [], event }, () => handler(event));
@@ -253,15 +253,15 @@ function onConsoleLog(callback) {
 
 const script = "\"use strict\";(()=>{const t=window,e=document.documentElement,c=[\"dark\",\"light\"],n=getStorageValue(\"localStorage\",\"nuxt-color-mode\")||\"system\";let i=n===\"system\"?u():n;const r=e.getAttribute(\"data-color-mode-forced\");r&&(i=r),l(i),t[\"__NUXT_COLOR_MODE__\"]={preference:n,value:i,getColorScheme:u,addColorScheme:l,removeColorScheme:d};function l(o){const s=\"\"+o+\"\",a=\"\";e.classList?e.classList.add(s):e.className+=\" \"+s,a&&e.setAttribute(\"data-\"+a,o)}function d(o){const s=\"\"+o+\"\",a=\"\";e.classList?e.classList.remove(s):e.className=e.className.replace(new RegExp(s,\"g\"),\"\"),a&&e.removeAttribute(\"data-\"+a)}function f(o){return t.matchMedia(\"(prefers-color-scheme\"+o+\")\")}function u(){if(t.matchMedia&&f(\"\").media!==\"not all\"){for(const o of c)if(f(\":\"+o).matches)return o}return\"light\"}})();function getStorageValue(t,e){switch(t){case\"localStorage\":return window.localStorage.getItem(e);case\"sessionStorage\":return window.sessionStorage.getItem(e);case\"cookie\":return getCookie(e);default:return null}}function getCookie(t){const c=(\"; \"+window.document.cookie).split(\"; \"+t+\"=\");if(c.length===2)return c.pop()?.split(\";\").shift()}";
 
-const _arIseAstZg = (function(nitro) {
+const _qiK5in818n = (function(nitro) {
   nitro.hooks.hook("render:html", (htmlContext) => {
     htmlContext.head.push(`<script>${script}<\/script>`);
   });
 });
 
 const plugins = [
-  _aIgXKs8mqR,
-_arIseAstZg
+  _3WZEe7OyWH,
+_qiK5in818n
 ];
 
 const defineAppConfig = (config) => config;
@@ -708,7 +708,7 @@ new Proxy(/* @__PURE__ */ Object.create(null), {
   }
 });
 
-const serverAssets = [{"baseName":"server","dir":"C:/Users/John-TancorIT/Desktop/System/CCS/server/assets"}];
+const serverAssets = [{"baseName":"server","dir":"C:/Users/John-TancorIT/Desktop/System/YugiOh/server/assets"}];
 
 const assets = createStorage();
 
@@ -720,11 +720,11 @@ const storage = createStorage({});
 
 storage.mount('/assets', assets);
 
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"C:/Users/John-TancorIT/Desktop/System/CCS"}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"C:/Users/John-TancorIT/Desktop/System/CCS/server"}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"C:/Users/John-TancorIT/Desktop/System/CCS/.nuxt"}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"C:/Users/John-TancorIT/Desktop/System/CCS/.nuxt/cache"}));
-storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"C:/Users/John-TancorIT/Desktop/System/CCS/.data/kv"}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"C:/Users/John-TancorIT/Desktop/System/YugiOh"}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"C:/Users/John-TancorIT/Desktop/System/YugiOh/server"}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"C:/Users/John-TancorIT/Desktop/System/YugiOh/.nuxt"}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"C:/Users/John-TancorIT/Desktop/System/YugiOh/.nuxt/cache"}));
+storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"C:/Users/John-TancorIT/Desktop/System/YugiOh/.data/kv"}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage, base) : storage;
@@ -1214,7 +1214,7 @@ function publicAssetsURL(...path) {
 
 const warnOnceSet = /* @__PURE__ */ new Set();
 const DEFAULT_ENDPOINT = "https://api.iconify.design";
-const _jieK3g = defineCachedEventHandler(async (event) => {
+const _o4WqnG = defineCachedEventHandler(async (event) => {
   const url = getRequestURL(event);
   if (!url)
     return createError({ status: 400, message: "Invalid icon request" });
@@ -1272,12 +1272,12 @@ const _jieK3g = defineCachedEventHandler(async (event) => {
   // 1 week
 });
 
-const _lazy_KbofJ1 = () => Promise.resolve().then(function () { return renderer$1; });
+const _lazy_l01Qua = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '/__nuxt_error', handler: _lazy_KbofJ1, lazy: true, middleware: false, method: undefined },
-  { route: '/api/_nuxt_icon/:collection', handler: _jieK3g, lazy: false, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_KbofJ1, lazy: true, middleware: false, method: undefined }
+  { route: '/__nuxt_error', handler: _lazy_l01Qua, lazy: true, middleware: false, method: undefined },
+  { route: '/api/_nuxt_icon/:collection', handler: _o4WqnG, lazy: false, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_l01Qua, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {
@@ -1542,7 +1542,7 @@ const renderSSRHeadOptions = {"omitLineBreaks":false};
 
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
-const getClientManifest = () => import('file://C:/Users/John-TancorIT/Desktop/System/CCS/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getClientManifest = () => import('file://C:/Users/John-TancorIT/Desktop/System/YugiOh/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 const getSSRStyles = lazyCachedFunction(() => Promise.resolve().then(function () { return styles$1; }).then((r) => r.default || r));
 const getSPARenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();

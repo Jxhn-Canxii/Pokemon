@@ -1,188 +1,182 @@
 <template>
-  <div class="flex justify-center items-center min-h-screen p-4">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-full h-full max-w-sm">
-      <h1 class="text-3xl font-semibold text-center text-emerald-900 mb-6">
-        Condo Management System
-      </h1>
+  <div class="p-6 min-h-screen">
+    <!-- Stars Background -->
+    <div class="stars" ref="starsContainer"></div>
 
-      <!-- Display error message -->
-      <div v-if="error" class="bg-red-500 text-white text-sm p-2 mb-4 rounded">
-        {{ error }}
+    <!-- Search Section -->
+    <div class="max-w-screen mx-auto mb-8">
+      <div class="search-container p-4 rounded-lg">
+        <div class="flex gap-4 flex-wrap">
+          <input 
+            v-model="searchQuery" 
+            type="text" 
+            placeholder="Search cards..." 
+            class="flex-1 p-2 border rounded-md bg-opacity-20 bg-white text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            @change.prevent="handleSearch"
+          />
+          <select 
+            v-model="selectedAttribute" 
+            class="p-2 border rounded-md bg-opacity-20 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+            @change.prevent="handleSearch"
+          >
+            <option value="">All Attributes</option>
+            <option value="DARK">DARK</option>
+            <option value="LIGHT">LIGHT</option>
+            <option value="WATER">WATER</option>
+            <option value="FIRE">FIRE</option>
+            <option value="WIND">WIND</option>
+            <option value="EARTH">EARTH</option>
+            <option value="DIVINE">DIVINE</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="max-w-6xl mx-auto">
+      <div v-if="loading" class="flex justify-center items-center h-40">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+      </div>
+      
+      <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div v-for="card in data" :key="card.id" class="card-container rounded-lg h-[400px]">
+          <div class="relative h-full w-full">
+            <img 
+              :src="card.card_images?.[0]?.image_url" 
+              :alt="card.name"
+              class="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            <div class="card-details absolute inset-0 w-full h-full bg-black/85 opacity-0 transition-all duration-300 ease-in-out hover:opacity-100 overflow-y-auto p-4">
+              <h3 class="font-bold text-lg mb-3 detail-item text-white" style="animation-delay: 0.1s">{{ card.name }}</h3>
+              <div class="text-sm space-y-2 text-white">
+                <p class="detail-item" style="animation-delay: 0.2s">
+                  <span class="font-semibold">Type:</span> {{ card.type }}
+                </p>
+                <p v-if="card.attribute" class="detail-item" style="animation-delay: 0.3s">
+                  <span class="font-semibold">Attribute:</span> {{ card.attribute }}
+                </p>
+                <p v-if="card.level" class="detail-item" style="animation-delay: 0.4s">
+                  <span class="font-semibold">Level:</span> {{ card.level }}
+                </p>
+                <p v-if="card.atk !== undefined" class="detail-item" style="animation-delay: 0.5s">
+                  <span class="font-semibold">ATK:</span> {{ card.atk }}
+                </p>
+                <p v-if="card.def !== undefined" class="detail-item" style="animation-delay: 0.6s">
+                  <span class="font-semibold">DEF:</span> {{ card.def }}
+                </p>
+                <p v-if="card.desc" class="detail-item mt-3 text-sm italic" style="animation-delay: 0.7s">
+                  {{ card.desc }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <form @submit.prevent="login">
-        <!-- Username Field -->
-        <div class="mb-4">
-          <label
-            for="username"
-            class="block text-sm font-medium text-emerald-900 mb-2"
-            >Username</label
-          >
-          <UInput
-            v-model="form.username"
-            size="md"
-            placeholder="Enter your username"
-            :class="{ 'border-red-500': errors.username }"
-          >
-            <template #trailing>
-              <UButton
-                color="gray"
-                variant="link"
-                icon="i-heroicons-user"
-                :padded="false"
-              />
-            </template>
-          </UInput>
-          <!-- Error Message -->
-          <p v-if="errors.username" class="text-red-500 text-sm mt-1">
-            {{ errors.username[0] }}
-          </p>
-        </div>
-
-        <!-- Password Field -->
-        <div class="mb-6 relative">
-          <label
-            for="password"
-            class="block text-sm font-medium text-emerald-900 mb-2"
-            >Password</label
-          >
-          <UInput
-            :type="showPassword ? 'text' : 'password'"
-            v-model="form.password"
-            size="md"
-            :ui="{ icon: { trailing: { pointer: '' } } }"
-            placeholder="Enter your password"
-            :class="{ 'border-red-500': errors.password }"
-          >
-            <template #trailing>
-              <UButton
-                color="gray"
-                :icon="showPassword ? 'i-heroicons-eye-slash' : 'i-heroicons-eye'"
-                :padded="false"
-                @click.prevent="showPassword = !showPassword"
-              />
-            </template>
-          </UInput>
-          <!-- Error Message -->
-          <p v-if="errors.password" class="text-red-500 text-sm mt-1">
-            {{ errors.password[0] }}
-          </p>
-        </div>
-
-        <UButton
-          color="yellow"
-          type="submit"
-          width="w-full"
-          size="md"
-          class="flex w-full items-center justify-center"
-          variant="solid"
-        >
-          Login
-        </UButton>
-         <p v-if="errors.message" class="text-red-500 text-sm mt-1">
-            {{ errors.message[0] }}
-          </p>
-      </form>
+      <!-- No Results Message -->
+      <div v-if="!loading && data.length === 0" class="text-center py-10">
+        <p class="text-white text-lg">No cards found</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import axios from "axios"; // Import axios for API requests
-import { useAuthStore } from "@/store/auth"; // Import the auth store
-import { useRouter } from "vue-router"; // Import the router for navigation
-import Swal from "sweetalert2"; // Import SweetAlert2
+import { ref, onMounted, onUnmounted } from "vue";
+import axios from "axios";
+import { useAuthStore } from "@/store/auth";
+import { useRouter } from "vue-router";
+import Swal from "sweetalert2";
 import { FormDx, handleApiError } from "@/utility/Helper.js";
-import { getPermissions, getRoles } from "@/utility/PreProcess.js";
 import { VUE_APP_API_URL } from "@/utility/Global.js";
+import '../assets/css/galaxy.css';
 
 definePageMeta({
   layout: "guest",
 });
 
-const error = ref(""); // Declare error ref to store the error message
-const errors = ref({}); // Reactive object to store field-specific errors
-const router = useRouter();
+const data = ref([]);
+const loading = ref(false);
+const searchQuery = ref('');
+const selectedAttribute = ref('');
+const starsContainer = ref(null);
+const stars = ref([]);
 
-const form = ref({
-  username: "",
-  password: "",
-});
-
-const showPassword = ref(false); // Boolean to toggle password visibility
-
-// Toggle function to show/hide password
-const togglePasswordVisibility = () => {
-  showPassword.value = !showPassword.value;
-};
-
-// Login function using axios for HTTP request
-const login = async () => {
-  // Reset errors
-  errors.value = {};
-
-  // Show the loading spinner alert using SweetAlert2
-  const swalInstance = Swal.fire({
-    title: "Logging in...",
-    text: "Please wait while we authenticate you.",
-    allowOutsideClick: false, // Prevent closing the modal by clicking outside
-    didOpen: () => {
-      Swal.showLoading(); // Show the loading spinner
-    },
-  });
-
-  try {
-    const formData = FormDx(form.value);
-    const response = await axios.post(`${VUE_APP_API_URL}login`, formData);
-    if (response.data && response.data.token) {
-      // Assuming the response contains a token and user data
-      const { token, user } = response.data;
-
-      console.log(response.data);
-      // Save token and user data to store
-      const authStore = useAuthStore();
-      authStore.setAuthData(token, user); // Store token and set authenticated to true
-
-      // Close the Swal loading spinner
-      swalInstance.close();
-
-      // Redirect to the homepage or another page after login
-      await preProcess(token); // Call preprocessing function
-
-      router.push("/admin/dashboard/"); // Redirect to the homepage or dashboard
-    }
-  } catch (error) {
-    // Close the Swal loading spinner
-    swalInstance.close();
-
-    if (error.response && error.response.data && error.response.data.errors) {
-      // Handle field-specific errors
-      errors.value = error.response.data.errors;
-    } else {
-      // Handle general error
-      handleApiError(error);
-    }
+// Create stars
+const createStars = () => {
+  if (!starsContainer.value) return;
+  
+  const numberOfStars = 100;
+  const container = starsContainer.value;
+  
+  for (let i = 0; i < numberOfStars; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    
+    // Random position
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    
+    // Random size
+    const size = Math.random() * 2 + 1;
+    
+    // Random duration
+    const duration = Math.random() * 3 + 2;
+    
+    star.style.left = `${x}%`;
+    star.style.top = `${y}%`;
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.setProperty('--duration', `${duration}s`);
+    
+    container.appendChild(star);
+    stars.value.push(star);
   }
 };
 
-// Pre-process function to get permissions and roles
-const preProcess = async (token) => {
-  try {
-    await getPermissions(token); // Get permissions
-    await getRoles(token); // Get roles
-  } catch (error) {
-    // Handle errors in the preprocessing steps
-    console.error("Error in preprocessing:", error);
-    Swal.fire({
-      icon: "error",
-      title: "Preprocessing failed",
-      text: "There was an issue fetching permissions or roles. Please try again.",
-    });
-  }
+// Clean up stars
+const cleanupStars = () => {
+  stars.value.forEach(star => star.remove());
+  stars.value = [];
 };
 
 onMounted(() => {
-  console.log(process.env.VITE_APP_API_URL);
+  getList();
+  createStars();
 });
+
+onUnmounted(() => {
+  cleanupStars();
+});
+
+const handleSearch = () => {
+  getList();
+};
+
+const getList = async () => {
+  loading.value = true;
+  try {
+    let url = `${VUE_APP_API_URL}?`;
+    
+    if (searchQuery.value) {
+      url += `fname=${encodeURIComponent(searchQuery.value)}`;
+    }
+    
+    if (selectedAttribute.value) {
+      url += `${searchQuery.value ? '&' : ''}attribute=${selectedAttribute.value}`;
+    }
+
+    const response = await axios.get(url);
+    data.value = response.data.data ?? [];
+  } catch (error) {
+    console.error(error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Failed to fetch cards. Please try again later.',
+    });
+  } finally {
+    loading.value = false;
+  }
+};
 </script>

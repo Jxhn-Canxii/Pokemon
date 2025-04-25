@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const siteTitle = 'Condo Cebu - Diane Residences'
+const siteTitle = 'Yugi-Oh'
 
 export default defineNuxtConfig({
   devtools: { enabled: false },

@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col galaxy-bg">
     
-    <main class="flex-grow overflow-x-hidden pb-3">
+    <main class="flex-grow overflow-x-hidden">
       <slot />
     </main>
     

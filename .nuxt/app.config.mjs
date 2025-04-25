@@ -232,6 +232,6 @@ if (import.meta.hot) {
   })
 }
 
-import cfg0 from "C:/Users/John-TancorIT/Desktop/System/CCS/app.config.ts"
+import cfg0 from "C:/Users/John-TancorIT/Desktop/System/YugiOh/app.config.ts"
 
 export default /*@__PURE__*/ defuFn(cfg0, inlineConfig)
